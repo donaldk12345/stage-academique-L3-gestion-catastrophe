@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello  {{ user.username }}!{% endblock %}
+
+{% block body %}
+<style>
+ 
+</style>
+
+<div class="main-wrapper">
+   {% include "partials/_header.html.twig" %}
+   
+   {% include "partials/_sidebar.html.twig" %}
+
+<div class="page-wrapper mt-4">
+ 
+<div class="row">
+<div class="col-md-11 d-flex m-auto">
+{% if user.catastrophes | length > 0  %}
+<div class="card card-table flex-fill">
+<div class="card-header">
+
+<h4 class="card-title text-center">Mes Catastrophes &nbsp;<span class="badge badge-success">{{app.user.catastrophes | length}}</span> </h4>
+
+</div>
+<div class="card-body">
+<div class="table-responsive no-radius">
+<table class="table table-hover table-center">
+<thead>
+<tr>
+<td class="text-nowrap">
+<div class="font-weight-600">Slug</div>
+</td>
+<td class="text-nowrap">Nom Catastrophe</td>
+<td class="text-center">Localistation</td>
+<td class="text-center"> Description </td>
+<td class="text-center"> Nombre de morts</td>
+<td class="text-center"> Nombre de Blèssés </td>
+<td class="text-center"> Ville</td>
+<td class="text-center"> Autres victimes</td>
+<td class="text-center"> Sans abris</td>
+<td class="text-center">Cause </td>
+<td class="text-center"> Dimenssion </td>
+<td class="text-center"> Categories</td>
+<td class="text-center"> Sous Categories </td>
+<td class="text-end">
+<div class="font-weight-600 text-danger">Actions</div>
+</td>
+</tr>
+</thead>
+<tbody>
+{% for catastrophe in user.catastrophes %}
+<tr>
+
+<td class="text-nowrap">
+<div class="font-weight-600"> {{ catastrophe.slug| u.truncate(15 ,'...') }} </div>
+</td>
+<td class="text-nowrap"> {{ catastrophe.nomCatastrophe }} </td>
+<td class="text-center">  {{ catastrophe.localisation }} </td>
+<td class="text-center">   {{  catastrophe.description| u.truncate(30 ,'...') }} </td>
+<td class="text-center">   {{  catastrophe.nombreMort }} </td>
+<td class="text-center">   {{  catastrophe.nombreBlesses }} </td>
+<td class="text-center">   {{  catastrophe.ville }} </td>
+<td class="text-center">   {{  catastrophe.autresVictimes }} </td>
+<td class="text-center">   {{  catastrophe.sansAbris }} </td>
+<td class="text-center">   {{  catastrophe.causeCatastrophe }} </td>
+<td class="text-center">   {{  catastrophe.dimension }} </td>
+<td class="text-center">   {{  catastrophe.categorie.nom }} </td>
+<td class="text-center">   {{  catastrophe.sousCategorie.nom }} </td>
+<td class="text-end">
+<div class="actions">
+<a href="#" class="btn btn-sm bg-success-light me-2">
+<i class="fas fa-pencil"></i>
+</a>
+<a href="#" class="btn btn-sm bg-danger-light">
+<i class="fas fa-trash"></i>
+ </a>
+ <a href="{{ path('view' , {'slug': catastrophe.slug } )}}" class="btn btn-sm bg-primary-light">
+<i class="fas fa-eye"></i>
+ </a>
+</div>
+</td>
+
+</tr>
+  {%  endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+  
+{% else %}
+  <div class="alert alert-warning alert-dismissible fade show shadow col-md-8 text-center m-auto">
+  <i class="bi bi-exclamation-octagon"></i><p>
+        <strong class="text-uppercase"> {{  user.username}}  n'as pas publier un catastrophe !</strong>
+     </p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+
+
+{% endif %}
+
+</div>
+
+</div>
+{% endblock %}

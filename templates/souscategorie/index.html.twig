@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Souscategorie index{% endblock %}
+
+{% block body %}
+    <h1>Souscategorie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for souscategorie in souscategories %}
+            <tr>
+                <td>{{ souscategorie.id }}</td>
+                <td>{{ souscategorie.nom }}</td>
+                <td>
+                    <a href="{{ path('app_souscategorie_show', {'id': souscategorie.id}) }}">show</a>
+                    <a href="{{ path('app_souscategorie_edit', {'id': souscategorie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_souscategorie_new') }}">Create new</a>
+{% endblock %}

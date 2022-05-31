@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catastrophe{% endblock %}
+
+{% block body %}
+    <h1>Catastrophe</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ catastrophe.id }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ catastrophe.localisation }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ catastrophe.description }}</td>
+            </tr>
+            <tr>
+                <th>NombreMort</th>
+                <td>{{ catastrophe.nombreMort }}</td>
+            </tr>
+            <tr>
+                <th>NombreBlesses</th>
+                <td>{{ catastrophe.nombreBlesses }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ catastrophe.ville }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ catastrophe.createdAt ? catastrophe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NomCatastrophe</th>
+                <td>{{ catastrophe.nomCatastrophe }}</td>
+            </tr>
+            <tr>
+                <th>AutresVictimes</th>
+                <td>{{ catastrophe.autresVictimes }}</td>
+            </tr>
+            <tr>
+                <th>SansAbris</th>
+                <td>{{ catastrophe.sansAbris }}</td>
+            </tr>
+            <tr>
+                <th>Dimension</th>
+                <td>{{ catastrophe.dimension }}</td>
+            </tr>
+            <tr>
+                <th>CauseCatastrophe</th>
+                <td>{{ catastrophe.causeCatastrophe }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ catastrophe.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_catastrophe_index') }}">back to list</a>
+
+    <a href="{{ path('app_catastrophe_edit', {'id': catastrophe.id}) }}">edit</a>
+
+    {{ include('catastrophe/_delete_form.html.twig') }}
+{% endblock %}

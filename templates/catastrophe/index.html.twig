@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catastrophe index{% endblock %}
+
+{% block body %}
+    <h1>Catastrophe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Localisation</th>
+                <th>Description</th>
+                <th>NombreMort</th>
+                <th>NombreBlesses</th>
+                <th>Ville</th>
+                <th>CreatedAt</th>
+                <th>NomCatastrophe</th>
+                <th>AutresVictimes</th>
+                <th>SansAbris</th>
+                <th>Dimension</th>
+                <th>CauseCatastrophe</th>
+                <th>Slug</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for catastrophe in catastrophes %}
+            <tr>
+                <td>{{ catastrophe.id }}</td>
+                <td>{{ catastrophe.localisation }}</td>
+                <td>{{ catastrophe.description }}</td>
+                <td>{{ catastrophe.nombreMort }}</td>
+                <td>{{ catastrophe.nombreBlesses }}</td>
+                <td>{{ catastrophe.ville }}</td>
+                <td>{{ catastrophe.createdAt ? catastrophe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ catastrophe.nomCatastrophe }}</td>
+                <td>{{ catastrophe.autresVictimes }}</td>
+                <td>{{ catastrophe.sansAbris }}</td>
+                <td>{{ catastrophe.dimension }}</td>
+                <td>{{ catastrophe.causeCatastrophe }}</td>
+                <td>{{ catastrophe.slug }}</td>
+                <td>
+                    <a href="{{ path('app_catastrophe_show', {'id': catastrophe.id}) }}">show</a>
+                    <a href="{{ path('app_catastrophe_edit', {'id': catastrophe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_catastrophe_new') }}">Create new</a>
+{% endblock %}
