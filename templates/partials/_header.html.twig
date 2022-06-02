@@ -113,9 +113,9 @@
 </div>
 </div>
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-<a class="dropdown-item" href="general.html">Mon Profile</a>
-<a class="dropdown-item" href="{{ path('user', {'slug': app.user.slug }) }}">Catastrophe Publier</a>
-<a class="dropdown-item" href="general.html">Réglage du compte</a>
+<a class="dropdown-item" href=" {{ path('profile') }} ">Mon Profile</a>
+<a class="dropdown-item" href="{{ path('user', {'slug': app.user.slug }) }}">Mes Catastrophes</a>
+<a class="dropdown-item" href="#">Méssagerie</a>
 {% endif %}
 <a class="dropdown-item" href="{{ path('security_logout') }}">Déconnexion</a>
 </div>

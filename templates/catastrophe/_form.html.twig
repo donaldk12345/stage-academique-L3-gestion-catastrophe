@@ -1,6 +1,20 @@
-{{ form_start(form) }}
+{{ form_start(form) }}</br>
     {{ form_widget(form) }}
-    <div class="mt-3 ml-3 col-md text-center">
-    <button class="register">{{ button_label|default('Enregistrer') }}</button>
-    </div>
+
+    {# Si la route est "catastrophes_edit on affiche les images #}
+	{% if app.request.attributes.get('_route') == 'catastrophes_edit' %}
+        <h2>Images du catastrophe</h2>
+        {% for image in catastrophe.images %}
+            <div class="row mt-2">
+             <div class="">
+                <img src="{{ asset('/uploads/'~image.nom) }}" alt="" width="150; border-radius:5px;">
+                {# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+                <a href="{{ path('catastrophes_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
+                 </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+     <div class="text-center">
+    <button class="register mt-3">{{ button_label|default('Enregistrer') }}</button>
+     </div>
 {{ form_end(form) }}
