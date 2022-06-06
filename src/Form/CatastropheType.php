@@ -32,6 +32,8 @@ class CatastropheType extends AbstractType
         ->add('sansAbris',IntegerType::class)
         ->add('dimension',NumberType::class)
         ->add('causeCatastrophe',TextType::class)
+        ->add('latitude',TextType::class)
+        ->add('longitude',TextType::class)
         ->add('continent',EntityType::class, [
             'class'=> Continent::class
         ])

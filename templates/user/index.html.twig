@@ -85,12 +85,7 @@
 </div>
 </div>
 </div>
-
 </div>
-</div>
-</div>
-
-  
 {% else %}
   <div class="alert alert-danger alert-dismissible fade show shadow col-md-8 text-center m-auto">
   <i class="bi bi-exclamation-octagon"></i><p>
@@ -102,7 +97,14 @@
 
 {% endif %}
 
-</div>
+  <div class="col-md-10 mt-3 m-auto">
+       {% if app.user  %}
+      {{ render_chart(chart) }}
 
+        {% endif %}
+  </div>
+</div>
+</div>
+</div>
 </div>
 {% endblock %}
