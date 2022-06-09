@@ -20,40 +20,14 @@ class UserController extends AbstractController
      * @Route("/user/{slug}",name="user")
      * @Security("is_granted('ROLE_USER')") 
      */
-    public function userProfile(User $user,CatastropheRepository $catastropheRepository,ChartBuilderInterface $chartBuilder): Response
+    public function userProfile(User $user,CatastropheRepository $catastropheRepository): Response
     {
         $catastrophes=$catastropheRepository->findAll();
-        $donnees=$catastropheRepository->findAll();
-         $labels= [];
-         $data=[];
-        
-         foreach($donnees as $donnee){
-
-            $labels[]=$donnee->getCreatedAt()->format('d/m/y');
-            $data[]=$donnee->getNombreMort();
-           
-           
-           
-
-         }
-         $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
-
-        $chart->setData([
-            'labels' => $labels,
-            'datasets' => [
-                [
-                    'label' => 'Catastrophes',
-                    'backgroundColor' => '#218c74',
-                    'borderColor' => '#218c74',
-                    'data' => $data,
-                ],
-            ],
-        ]);
-        $chart->setOptions([/** */]);
+       
         return $this->render('user/index.html.twig', [
             'user' => $user,
-            'catastrophes' => $catastrophes,
-            'chart' => $chart
+            'catastrophes' => $catastrophes
+            
         ]);
     }
     /**
@@ -84,6 +58,50 @@ class UserController extends AbstractController
            
         ]);
 
+
+    }
+    
+    /**
+     * 
+     *@Route("/statistique", name="statistique")
+     *@Security("is_granted('ROLE_ADMIN')") 
+     */
+    public function statistique(CatastropheRepository $catastropheRepository,ChartBuilderInterface $chartBuilder){
+
+        $donnees=$catastropheRepository->findAll();
+        $labels= [];
+        $data=[];
+        $color=[];
+       
+        foreach($donnees as $donnee){
+
+           $labels[]=$donnee->getCreatedAt()->format('d/m/y');
+           $color[]=$donnee->getCouleur();
+           $data[]=$donnee->getNombreMort();
+          
+          
+          
+
+        }
+        $chart = $chartBuilder->createChart(Chart::TYPE_BAR);
+
+       $chart->setData([
+           'labels' => $labels,
+           'datasets' => [
+               [
+                   'label' => 'Catastrophes',
+                   'backgroundColor' => $color,
+                   'borderColor' => '#F7F7F7',
+                   'data' => $data,
+               ],
+           ],
+       ]);
+       $chart->setOptions([/** */]);
+     
+        return $this->render('user/statistique.html.twig',[
+            'chart' => $chart
+           
+        ]);
 
     }
     

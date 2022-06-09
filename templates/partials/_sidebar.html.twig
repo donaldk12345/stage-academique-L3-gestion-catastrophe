@@ -5,28 +5,28 @@
 <li class="menu-title">
 </li>
 <li class="active">
-<a href=" {{ path('home') }} "><i class="fas fa-home"></i> <span>Dashboard</span></a>
+<a href=" {{ path('home') }} "><i class="fas fa-home" style="color:#218C74;"></i> <span>Dashboard</span></a>
 </li>
 {% if is_granted('ROLE_ADMIN') %}
 <li class="submenu nav-item dropdown has-arrow">
-<a href="{{ path('utilisateurs') }}"><i class="fas fa-users"></i> <span> Utilisateurs</span></a>
+<a href="{{ path('utilisateurs') }}"><i class="fas fa-users" style="color:#218C74;"></i> <span> Utilisateurs</span></a>
 </li>
 {% endif %}
 <li class="submenu">
-<a href=" {{ path('catastrophe_new') }} "><i class="fas fa-plus"></i> <span> Nouveau Catastrophe</span></a>
+<a href=" {{ path('catastrophe_new') }} "><i class="fas fa-plus" style="color:#218C74;"></i> <span> Nouveau Catastrophe</span></a>
 </li>
  {% if is_granted('ROLE_ADMIN') %}
 <li>
-<a href="blank-page.html"><i class="fas fa-newspaper"></i> <span>Catastrophes</span></a>
+<a href="blank-page.html"><i class="fas fa-newspaper" style="color:#218C74;"></i> <span>Catastrophes</span></a>
 </li>
 <li>
-<a href="vector-maps.html"><i class="fas fa-comments"></i> <span>Préventions</span></a>
+<a href="vector-maps.html"><i class="fas fa-comments" style="color:#218C74;"></i> <span>Préventions</span></a>
 </li>
 <li>
-<a href="#"><i class="fas fa-sync"></i> <span> Statistiques</span></a>
+<a href="  {{  path('statistique') }} "><i class="fas fa-sync" style="color:#218C74;"></i> <span> Statistiques</span></a>
 </li>
 <li>
- <a href="components.html"><i class="fas fa-cog"></i> <span>Réglages</span></a>
+ <a href="components.html"><i class="fas fa-cog" style="color:#218C74;"></i> <span>Réglages</span></a>
 </li>
  {% endif %}
 </ul>

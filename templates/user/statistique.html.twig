@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+
+{% block body %}
+<style>
+ 
+</style>
+
+<div class="main-wrapper">
+   {% include "partials/_header.html.twig" %}
+   
+   {% include "partials/_sidebar.html.twig" %}
+
+<div class="page-wrapper mt-4">
+ 
+<div class="row">
+<div class="col-md-11 d-flex m-auto">
+  <div class="col-md-8 mt-3 m-auto">
+      
+      {{ render_chart(chart) }}
+
+       
+  </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

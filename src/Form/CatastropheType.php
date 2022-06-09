@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -34,6 +35,7 @@ class CatastropheType extends AbstractType
         ->add('causeCatastrophe',TextType::class)
         ->add('latitude',TextType::class)
         ->add('longitude',TextType::class)
+        ->add('couleur',ColorType::class)
         ->add('continent',EntityType::class, [
             'class'=> Continent::class
         ])

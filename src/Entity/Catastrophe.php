@@ -126,6 +126,11 @@ class Catastrophe
      */
     private $latitude;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $couleur;
+
         /**
      * 
      * @ORM\PrePersist
@@ -402,6 +407,18 @@ class Catastrophe
     public function setLatitude(?string $latitude): self
     {
         $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?string $couleur): self
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }
