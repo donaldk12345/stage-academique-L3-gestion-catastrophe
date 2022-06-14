@@ -63,4 +63,14 @@ class CatastropheRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+      public function search($value)
+    {
+    return $this->createQueryBuilder('p')
+        ->andWhere('p.nomCatastrophe  LIKE :searchItem OR p.description LIKE :searchItem')
+        ->setParameter('searchItem', '%'.$value.'%')
+        ->getQuery()
+        ->getResult()
+    ;
+    }
 }

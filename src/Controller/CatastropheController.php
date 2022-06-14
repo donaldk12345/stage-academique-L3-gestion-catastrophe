@@ -102,7 +102,7 @@ class CatastropheController extends AbstractController
             $entityManager->persist($catastrophe);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('user');
         }
 
         return $this->render('catastrophe/edit.html.twig', [

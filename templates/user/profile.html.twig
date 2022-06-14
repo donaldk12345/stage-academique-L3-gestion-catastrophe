@@ -21,10 +21,9 @@
 <div class="page-header">
 <div class="row align-items-center">
 <div class="col">
-<h3 class="page-title">General Settings</h3>
+<h3 class="page-title">Mon profile</h3>
 <ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-<li class="breadcrumb-item active">General Settings</li>
+
 </ul>
 </div>
 </div>
@@ -57,16 +56,16 @@
 <a href="#" class="float-end"><h5>103</h5></a>
 </div>
 <div class="profile-list">
-<a href="group-history.html"><button type="button" class="btn btn-block btn-outline-light">View History</button></a>
+<a href="{{ path('user', {'slug': app.user.slug }) }}"><button type="button" class="btn btn-block btn-outline-light">Mes publications</button></a>
 </div>
 </div>
 </div>
 </div>
  {% endif %}
-<div class="col-md-8">
+<div class="col-md-8 ">
 <div class="card">
 <div class="card-header">
- <h4 class="card-title">General Settings</h4>
+ <h4 class="card-title">Modifier Le Compte</h4>
 </div>
 <div class="card-body">
 <form action="#">
@@ -87,7 +86,7 @@
 <input type="password" class="form-control" value="seemas12345">
 </div>
 <div class="text-end">
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit" class="register">Enregistrer</button>
 </div>
 </form>
 </div>
