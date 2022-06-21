@@ -67,8 +67,8 @@ class UserController extends AbstractController
      *@Security("is_granted('ROLE_ADMIN')") 
      */
     public function statistique(CatastropheRepository $catastropheRepository,ChartBuilderInterface $chartBuilder){
-
-        $donnees=$catastropheRepository->findAll();
+        
+        $donnees=$catastropheRepository->findByDate();
         $labels= [];
         $data=[];
         $color=[];

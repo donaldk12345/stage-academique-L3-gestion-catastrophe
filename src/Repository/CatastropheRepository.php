@@ -73,4 +73,18 @@ class CatastropheRepository extends ServiceEntityRepository
         ->getResult()
     ;
     }
+       public function findByDate(): ?Array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT c
+            FROM App\Entity\Catastrophe c
+            ORDER BY c.nombreMort ASC'
+        );
+
+        // returns an array of Product objects
+        return $query->getResult();
+       ;
+   }
 }
