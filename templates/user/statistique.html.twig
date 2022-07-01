@@ -17,12 +17,38 @@
 <div class="row">
 <div class="col-md-11 d-flex m-auto">
   <div class="col-md-8 mt-3 m-auto">
+    <div class="col-md text-center mt-2">
+ <h5 class=" text-muted">Nombre de mort en fonction de la date </h5>
+ </div> <br><br>
       
       {{ render_chart(chart) }}
 
        
   </div>
 </div>
+<div class="col-md-11 d-flex m-auto mt-4">
+  <div class="col-md-8 mt-3 m-auto">
+    <div class="col-md text-center mt-2">
+ <h5 class=" text-muted">Nombre de mort en fonction du type de catastrophe</h5>
+ </div> <br><br>
+      
+      {{ render_chart(chart2) }}
+
+       
+  </div>
+</div>
+<div class="col-md-11 d-flex m-auto mt-4">
+  <div class="col-md-6 mt-3 m-auto">
+  <div class="col-md text-center mt-2">
+ <h5 class=" text-muted">Nombre de mort en fonction des pays</h5>
+ </div> <br><br>
+      
+      {{ render_chart(chart3) }}
+
+       
+  </div>
+</div>
+ 
 </div>
 </div>
 </div>

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CatastropheRepository;
+use App\Repository\PaysRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -130,6 +131,11 @@ class Catastrophe
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $couleur;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $couts;
 
         /**
      * 
@@ -339,6 +345,8 @@ class Catastrophe
         return $this->pays;
     }
 
+  
+
     public function setPays(?Pays $pays): self
     {
         $this->pays = $pays;
@@ -419,6 +427,18 @@ class Catastrophe
     public function setCouleur(?string $couleur): self
     {
         $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    public function getCouts(): ?int
+    {
+        return $this->couts;
+    }
+
+    public function setCouts(?int $couts): self
+    {
+        $this->couts = $couts;
 
         return $this;
     }

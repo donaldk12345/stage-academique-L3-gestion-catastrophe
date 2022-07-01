@@ -1741,8 +1741,8 @@ button.bg-danger:hover {
 .header .has-arrow .dropdown-toggle:after {
     border-top: 0;
     border-left: 0;
-    border-bottom: 2px solid #7c2296;
-    border-right: 2px solid #7c2296;
+    border-bottom: 2px solid #00bf6f;
+    border-right: 2px solid #00bf6f;
     content: '';
     height: 8px;
     display: inline-block;
@@ -1848,7 +1848,7 @@ button.bg-danger:hover {
 }
 
 .header .user-menu .dropdown-menu>li>a i {
-    color: #2962ff;
+    color: #00bf6f;
     font-size: 16px;
     margin-right: 10px;
     min-width: 18px;
