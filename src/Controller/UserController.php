@@ -6,9 +6,12 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Entity\User;
 use App\Entity\Catastrophe;
+use App\Form\EditProfileType;
 use App\Repository\UserRepository;
 use Symfony\UX\Chartjs\Model\Chart;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CatastropheRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -56,7 +59,26 @@ class UserController extends AbstractController
      */
     public function profileUtilisateur(){
 
-  
+      
+      /*  $form=$this->createForm(EditProfileType::class,$user);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $photo=$form->get('imageFile')->getData();
+            if($photo){
+                $file=md5(uniqid()) . '.' . $photo->guessExtension();
+
+                $photo->move(
+                    $this->getParameter('blog_images'), $file
+                );
+
+                $user->setImageUser($file);
+
+            }
+            $entityManagerInterface->flush();
+            $this->addFlash('success','Le profile à été bien modifié');
+
+            return $this->redirectToRoute('home');
+        } */
 
         return $this->render('user/profile.html.twig',[
            

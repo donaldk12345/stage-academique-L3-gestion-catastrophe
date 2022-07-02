@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\CatastropheRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,5 +27,20 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'stats' => compact('users','catastrophes')
         ]);
+    }
+
+    /**
+     * 
+     *@Route("/catastrophe-list", name="catastrophe-list")
+     *
+     */
+    public function catastropheList(CatastropheRepository $catastropheRepository){
+
+        $catastrophes=$catastropheRepository->findAll();
+
+        return  $this->render('home/catastrophe.html.twig',[
+            'catastrophes' => $catastrophes
+        ]);
+
     }
 }
