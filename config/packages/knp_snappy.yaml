@@ -7,3 +7,7 @@ knp_snappy:
         enabled:    true
         binary:     '%env(WKHTMLTOIMAGE_PATH)%'
         options:    []
+
+
+    temporary_folder: "%kernel.cache_dir%/snappy"
+    process_timeout: 20

@@ -17,104 +17,28 @@
   {% include "partials/_data_size.html.twig" %}
 
     {% endif %}
-<div class="row">
-<div class="col-md-11 d-flex m-auto">
+<div class="row mb-5 justify-content-center">
 
-<div class="card card-table flex-fill">
-<div class="card-header">
-<h4 class="card-title float-start">User List</h4>
-<div class="table-search float-end">
-<input type="text" class="form-control" placeholder="Search">
-<button class="btn" type="submit"><i class="fa fa-search"></i></button>
-</div>
-</div>
-<div class="card-body">
-<div class="table-responsive no-radius">
-<table class="table table-hover table-center">
-<thead>
-<tr>
-<th>User Id</th>
-<th>User Name</th>
-<th class="text-center">Joined Date</th>
-<th class="text-center">Last Seen</th>
-<th class="text-end">Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="text-nowrap">
-<div class="font-weight-600">001</div>
-</td>
-<td class="text-nowrap">Scott Albright</td>
-<td class="text-center">20 Jan 2019</td>
-<td class="text-center">
-15 mins ago
-</td>
-<td class="text-end">
-<div class="font-weight-600 text-danger">Inactive</div>
-</td>
-</tr>
-<tr>
-<td class="text-nowrap">
-<div class="font-weight-600">002</div>
-</td>
-<td class="text-nowrap">Kevin Howard</td>
-<td class="text-center">10 Mar 2019</td>
-<td class="text-center">
-Just Now
-</td>
-<td class="text-end">
-<div class="font-weight-600 text-success">Active</div>
-</td>
-</tr>
-<tr>
-<td class="text-nowrap">
-<div class="font-weight-600">003</div>
-</td>
-<td class="text-nowrap">Eric Knight</td>
-<td class="text-center">
-24 Jun 2019</td>
-<td class="text-center">
-1 hr ago
-</td>
-<td class="text-end">
-<div class="font-weight-600 text-success">Inactive</div>
-</td>
-</tr>
-<tr>
-<td class="text-nowrap">
-<div class="font-weight-600">004</div>
-</td>
-<td class="text-nowrap">Irene Perkins</td>
-<td class="text-center">
-09 Sep 2019</td>
-<td class="text-center">
-3 mins ago
-</td>
-<td class="text-end">
-<div class="font-weight-600 text-success">Active</div>
-</td>
-</tr>
-<tr>
-<td class="text-nowrap">
-<div class="font-weight-600">005</div>
-</td>
-<td class="text-nowrap">Carol Andre</td>
-<td class="text-center">10 Oct 2020</td>
-<td class="text-center">
-1 day ago
-</td>
-<td class="text-end">
-<div class="font-weight-600 text-danger">Inactive</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-</div>
+    <div class="text-center mt-3 col-md text-muted text-uppercase"><h3>Liste des catastrophes publier</h3></div>
+<div class="col-md-11  m-auto pb-4">
+        <div class="row m-auto justify-content-center">
+     
+        {% for catastrophe in catastrophees %}
+               
+                  <div class="card text-center" style="width:18rem; margin:5px!important;">
+                    <div class="card-header"> {{ catastrophe.SousCategorie.nom }} </div>
+                    <div class="card-body mt-0">
+                      <h5 class="card-title">{{ catastrophe.nomCatastrophe }}</h5>
+                      <p class="card-text">{{ catastrophe.description| u.truncate(55 ,'...') }}</p>
+                      <a href="{{ path('view' , {'slug': catastrophe.slug } )}}" class="btn btn-sm bg-success-light me-2">Plus de Details ...</a>
+                      <div class=" text-muted mt-3">{{ catastrophe.createdAt | ago (locale='fr') }}</div>
+                    </div>
+                    
+                  </div>
+       {% endfor %}
+         </div>
+       
+     
 </div>
 </div>
 </div>

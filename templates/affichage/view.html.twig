@@ -21,10 +21,10 @@
 
       <div class="card card-table flex-fill">
                      <div class="card-header">
-                                 <h4 class="header-title text-center" style="text-transform:uppercase; font-weight:300;">Details sur Le catastrophe</h4>
+                                 <h4 class="header-title text-center text-muted" style="text-transform:uppercase; font-weight:300;">Details sur Le catastrophe</h4>
                                 <div class="list-group">
                                         <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1" style="color:#218C74; font-weight:500; font-size:20px;">Nom du catastrophe:&nbsp; {{ catastrophe.nomCatastrophe  }} </h5>
+                                            <h5 class="mb-1" style="font-size:14px;">Nom du catastrophe:&nbsp; <span style="color:#218C74; font-weight:500; font-size:14px;">{{ catastrophe.nomCatastrophe  }}</span> </h5>
                                              
                                             <small style="color:#218C74; font-weight:300;"> {{ catastrophe.createdAt | ago (locale='fr') }}</small>
                                         </div>
@@ -38,7 +38,7 @@
                                         <small style="font-weight:500;font-family: 'Poppins', sans-serif; font-size: 14px"> Nombres de morts :&nbsp;{{ catastrophe.nombreMort }}</small>
                                          <small style="font-weight:500;font-family: 'Poppins', sans-serif; font-size: 14px"> Nombres de Blèssés :&nbsp;{{ catastrophe.nombreBlesses }}</small>
                                         <small style="font-weight:500;font-family: 'Poppins', sans-serif; font-size: 14px"> Sans abris :&nbsp;{{ catastrophe.sansAbris }}</small>
-                                         <small style="font-weight:500;font-family: 'Poppins', sans-serif; font-size: 14px"> Dimenssion :&nbsp;{{ catastrophe.dimension }}</small>
+                                         <small style="font-weight:500;font-family: 'Poppins', sans-serif; font-size: 14px"> Dimenssion :&nbsp;{{ catastrophe.dimension }}&nbsp;Km</small>
                                         <small style="font-weight:500;font-family: 'Poppins', sans-serif; font-size: 14px"> Couts :&nbsp;{{ catastrophe.couts }} &nbsp;&nbsp;FCFA</small>
                                        
                                 

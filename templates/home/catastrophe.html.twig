@@ -4,7 +4,22 @@
 
 {% block body %}
 <style>
- 
+ .pagina{
+  margin-left:15px;
+  margin-bottom:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.page-item.active .page-link{
+  background-color:#218C74!important;
+  border:none;
+  color:#fff!important;
+}
+.page-link{
+  color:#218C74!important;
+  outline:none!important;
+}
 </style>
 
 <div class="main-wrapper">
@@ -18,17 +33,18 @@
 <div class="col-md-11 d-flex m-auto">
 
 <div class="card card-table flex-fill">
-<div class="card-header">
-<h4 class="card-title float-start">Liste des Catastrophes</h4>
+<div class="card-header text-center m-auto">
+<h4 class="card-title float-start text-center text-muted">Liste des Catastrophes</h4>
 </div>
 <div class="card-body">
 <div class="table-responsive no-radius">
 <table class="table table-hover table-center">
 <thead>
 <tr>
-<th>Catastrophe Id</th>
-<th>nom</th>
-<th class="text-center">Categroie</th>
+<th class="text-center">Id catastrophe</th>
+<th class="text-center">Nom du catastrophe</th>
+<th class="text-center">Catastrophe publier par </th>
+
 <th class="text-center">Sous Categorie</th>
 <th class="text-end">Actions</th>
 </tr>
@@ -41,8 +57,10 @@
 <td class="text-nowrap">
 <div class="font-weight-600">  {{ catastrophe.id}} </div>
 </td>
-<td class="text-nowrap">  {{ catastrophe.nomCatastrophe }} </td>
-<td class="text-center"> {{  catastrophe.categorie.nom }} </td>
+<td class="text-nowrap">  {{ catastrophe.nomCatastrophe| u.truncate(25 ,'...') }} </td>
+<td class="text-center">
+  {{  catastrophe.catastrophe.email }}
+</td>
 <td class="text-center">
   {{  catastrophe.SousCategorie.nom }}
 </td>
@@ -65,6 +83,11 @@
 </div>
 
 </div>
+ <div class="pagina mt-3">
+          <div class="pagination">
+          {{ knp_pagination_render(catastrophes) }}
+              </div>
+     </div>
 </div>
 </div>
 </div>

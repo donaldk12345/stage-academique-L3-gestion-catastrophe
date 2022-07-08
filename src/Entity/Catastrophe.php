@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CatastropheRepository;
-use App\Repository\PaysRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 use Cocur\Slugify\Slugify;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PaysRepository;
+use App\Repository\CatastropheRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\HasLifecycleCallbacks()
@@ -48,7 +49,7 @@ class Catastrophe
     private $ville;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
@@ -220,12 +221,12 @@ class Catastrophe
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(\DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
 

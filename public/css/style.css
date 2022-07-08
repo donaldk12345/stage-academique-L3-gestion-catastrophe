@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    background-color: #fafbff;
+    background-color: #F3F4F6;
     color: #333;
     font-family: poppins, sans-serif;
     font-size: 15px;
@@ -4846,4 +4846,15 @@ a:hover {
 .register:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
     transform: translate3d(0, -2px, 0)
+}
+
+ul#menu-v,
+#menu-v ul {
+    width: 200px;
+    /* Main Menu width */
+    border: 1px solid rgba(190, 190, 190, 0.3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 9;
 }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Knp\Snappy\Pdf;
 use App\Entity\User;
 use App\Entity\Catastrophe;
 use App\Form\EditProfileType;
@@ -95,17 +96,22 @@ class UserController extends AbstractController
     public function statistique(CatastropheRepository $catastropheRepository,ChartBuilderInterface $chartBuilder){
         
         $donnees=$catastropheRepository->findByDate();
+        $parPays=$catastropheRepository->findByPays();
+        $parNombre=$catastropheRepository->findByNombre();
+        $parCategorie=$catastropheRepository->findByCategory();
         $labels= [];
+        $labels1=[];
+        $data1=[];
         $data=[];
         $color=[];
         $labels2=[];
         $labels3=[];
+        $data3=[];
+        $data2=[];
        
         foreach($donnees as $donnee){
 
            $labels[]=$donnee->getCreatedAt()->format('d/m/y');
-           $labels2[]=$donnee->getSousCategorie()->getNom();
-           $labels3[]=$donnee->getPays()->getNom();
            $color[]=$donnee->getCouleur();
            $data[]=$donnee->getNombreMort();
           
@@ -113,7 +119,27 @@ class UserController extends AbstractController
           
 
         }
+         foreach($parNombre as $nombre){
+
+            $labels2[]=$nombre['pays'];
+            $data2[]=$nombre['count'];
+
+         }
+
+        foreach($parPays as $items){
+
+            $labels3[]=$items['pays'];
+           
+            $data3[]=$items['nombreMort'];
+            
+        }
+
+        foreach($parCategorie as $categories){
+            $labels1[]=$categories['categorie'];
+            $data1[]=$categories['count'];
+        }
         $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $chart1=$chartBuilder->createChart(Chart::TYPE_LINE);
         $chart2= $chartBuilder->createChart(Chart::TYPE_BAR);
         $chart3=$chartBuilder->createChart(Chart::TYPE_PIE);
 
@@ -128,15 +154,26 @@ class UserController extends AbstractController
                ],
            ],
        ]);
+       $chart1->setData([
+        'labels' => $labels1,
+        'datasets' => [
+            [
+                'label' => 'Nombre de  catastrophe par categorie',
+                'backgroundColor' => '#BDBDBD',
+                'borderColor' => '#BDBDBD',
+                'data' => $data1,
+            ],
+        ],
+    ]);
 
        $chart2->setData([
         'labels' => $labels2,
         'datasets' =>[
             [
-                'label' => 'Nombres de morts par type de catastrophe',
-                'backgroundColor' =>$color,
+                'label' => 'Nombre de catastrophes enregistrer par pays',
+                'backgroundColor' =>'#BDBDBD',
                 'borderColor' => '#fff',
-                'data' => $data
+                'data' => $data2
             ],
         ],
     ]);
@@ -146,18 +183,20 @@ class UserController extends AbstractController
         'datasets' =>[
             [
                 'label' => 'Nombres de morts par pays',
-                'backgroundColor' =>$color,
+                'backgroundColor' =>'#BDBDBD',
                 'borderColor' => '#fff',
-                'data' => $data
+                'data' => $data3
             ],
         ],
     ]);
        $chart->setOptions([/** */]);
+       $chart1->setOptions([/** */]);
        $chart2->setOptions([/** */]);
        $chart3->setOptions([/** */]);
      
         return $this->render('user/statistique.html.twig',[
             'chart' => $chart,
+            'chart1' => $chart1,
             'chart2'=> $chart2,
             'chart3'=> $chart3
            
@@ -169,39 +208,36 @@ class UserController extends AbstractController
      * 
      *@Route("/download", name="download") 
      */
-    public function pdfPrint(CatastropheRepository $catastrophe){
+    public function pdfPrint(CatastropheRepository $catastrophe,Pdf $knpSnappyPdf){
 
 
 
         $donnees=$catastrophe->findAll();
-
-        $pdfOptions= new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
-        $pdfOptions->setIsRemoteEnabled(true);
-        $dompdf= new Dompdf($pdfOptions);
-        $context= stream_context_create([
-          'ssl'=> [
-            'verify_peer'=> FALSE,
-            'verify_peer_name'=> FALSE,
-            'allow_self_signed'=>TRUE
-          ]
-          ]);
-          $dompdf->setHttpContext($context);
      
          $html=$this->renderView('user/pdf.html.twig',[
             'donnees' => $donnees
            
         ]);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4','portrait');
-        $dompdf->render();
-  
-        $fichier='statistique-data-'.'.pdf';
-        $dompdf->stream($fichier, [
-        'Attachment' => true
-        ]);
-        return new Response();
-  
+        return new PdfResponse(
+            $knpSnappyPdf->getOutputFromHtml($html),
+            'file.pdf'
+        );
+       
+
+    }
+
+   /**
+    * @Route("/test", name="test")
+    */
+    public function parPays(CatastropheRepository $catastrophe){
+
+        $pays=$catastrophe->findByCategory();
+
+      
+       return $this->render('user/test.html.twig',[
+       
+       'pays' => $pays
+       ]);
 
     }
 

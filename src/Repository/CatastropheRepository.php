@@ -80,11 +80,44 @@ class CatastropheRepository extends ServiceEntityRepository
         $query = $entityManager->createQuery(
             'SELECT c
             FROM App\Entity\Catastrophe c
-            ORDER BY c.nombreMort ASC'
+            ORDER BY c.createdAt '
         );
 
         // returns an array of Product objects
         return $query->getResult();
        ;
    }
+
+   public function findByPays(): ?Array
+   {     
+       return $this->createQueryBuilder('c')
+       //->select('SUM(c.nombreMort)')
+       //->leftJoin('c.pays', 'p')
+       //->groupBy('p.nom')
+       ->select('p.nom as pays','SUM(c.nombreMort) as nombreMort')
+       ->leftJoin('c.pays','p')
+       ->groupBy('p.nom')
+       ->getQuery()
+       ->getResult();
+   }
+
+   public function findByNombre(): ?Array{
+    return $this->createQueryBuilder('c')
+    ->select('p.nom as pays', 'COUNT(c) as count')
+    ->leftJoin('c.pays','p')
+    ->groupBy('p.nom')
+    ->getQuery()
+    ->getResult();
+
+   }
+   public function findByCategory(): ?Array{
+    return $this->createQueryBuilder('c')
+    ->select('s.nom as categorie', 'COUNT(c) as count')
+    ->leftJoin('c.souscategorie','s')
+    ->groupBy('s.nom')
+    ->getQuery()
+    ->getResult();
+
+   }
+   
 }

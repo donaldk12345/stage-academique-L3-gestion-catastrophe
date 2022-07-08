@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Images;
 use DateTimeImmutable;
 use App\Entity\Catastrophe;
+use App\Entity\User;
 use App\Form\CatastropheType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CatastropheRepository;
@@ -14,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Role\Role;
 
 #[Route('/catastrophe')]
 class CatastropheController extends AbstractController
@@ -55,7 +57,7 @@ class CatastropheController extends AbstractController
                 $catastrophe->addImage($img);
             }
 
-            $catastrophe->setCreatedAt(new \DateTimeImmutable());
+            
             $catastrophe->setCatastrophe($this->getUser("user_id"));
             $entityManager->persist($catastrophe);
             $entityManager->flush();
@@ -101,7 +103,6 @@ class CatastropheController extends AbstractController
 
             $entityManager->persist($catastrophe);
             $entityManager->flush();
-
             return $this->redirectToRoute('home');
         }
 
