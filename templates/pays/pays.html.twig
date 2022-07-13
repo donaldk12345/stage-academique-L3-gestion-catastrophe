@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Catastrophes!{% endblock %}
+
+{% block body %}
+<style>
+ 
+</style>
+
+<div class="main-wrapper">
+   {% include "partials/_header.html.twig" %}
+   
+   {% include "partials/_sidebar.html.twig" %}
+
+<div class="page-wrapper mt-4">
+<div class="row">
+<div class="col-md-11 d-flex m-auto">
+
+<div class="card card-table flex-fill">
+<div class="card-header">
+<h4 class="card-title  text-center text-muted" style="">Listes des pays</h4> &nbsp;&nbsp;<a href="{{ path('app_pays_new') }}">Nouveau Pays</a>
+</div>
+<div class="card-body">
+<div class="table-responsive no-radius">
+<table class="table table-hover table-center">
+<thead>
+<tr>
+<th>ID</th>
+<th>nom</th>
+<th class="text-start">Actions</th>
+</tr>
+</thead>
+<tbody>
+ {% for p in pays %}
+<tr>
+<td class="text-nowrap">
+<div class="font-weight-600">
+  <a href="#" class=" text-muted"> {{ p.id }} </a>
+</h2>
+</div>
+</td>
+<td class="text-nowrap"> {{ p.nom }} </td>
+<td>
+<div class="actions m-auto" style="">
+<a href="{{ path('app_pays_edit', {'id': p.id}) }}" class="btn btn-sm bg-success-light me-2">
+<i class="fas fa-pencil"></i>
+</a>
+&nbsp;
+<span>
+{{ include('pays/_delete_form.html.twig') }}
+</span>
+
+</div>
+</td>
+</tr>
+ {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endblock %}

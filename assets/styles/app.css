@@ -1,1 +1,4 @@
 @import '~bootstrap';
+.turbo-progress-bar {
+    background-color: #218c75c9!important;
+}

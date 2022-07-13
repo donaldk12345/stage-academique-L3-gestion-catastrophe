@@ -4,7 +4,18 @@
 
 {% block body %}
 <style>
- 
+ .btn-outline-primary {
+  color: #218c75e1;
+  border-color: #218c75e1;
+  background: transparent;
+}
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #218c75e1;
+  border-color: #218c75fd;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
+  transform: translateY(-1px);
+}
 </style>
 
 <div class="main-wrapper">
@@ -18,25 +29,26 @@
 
     {% endif %}
 <div class="row mb-5 justify-content-center">
+<div class="col-md-11 d-flex m-auto">
 
-    <div class="text-center mt-3 col-md text-muted text-uppercase"><h3>Liste des catastrophes publier</h3></div>
-<div class="col-md-11  m-auto pb-4">
-        <div class="row m-auto justify-content-center">
-     
-        {% for catastrophe in catastrophees %}
-               
-                  <div class="card text-center" style="width:18rem; margin:5px!important;">
-                    <div class="card-header"> {{ catastrophe.SousCategorie.nom }} </div>
-                    <div class="card-body mt-0">
-                      <h5 class="card-title">{{ catastrophe.nomCatastrophe }}</h5>
-                      <p class="card-text">{{ catastrophe.description| u.truncate(55 ,'...') }}</p>
-                      <a href="{{ path('view' , {'slug': catastrophe.slug } )}}" class="btn btn-sm bg-success-light me-2">Plus de Details ...</a>
-                      <div class=" text-muted mt-3">{{ catastrophe.createdAt | ago (locale='fr') }}</div>
+   <div class="card col-md">
+                    <div class="d-flex align-items-end row">
+                      <div class="col-sm-10">
+                        <div class="card-body">
+                          <h5 class="card-title " style="color:#218c75e1">Congratulations  {{app.user.username}} ! 🎉</h5>
+                          <p class="mb-4">
+                            Vous etes bien connecté veillez cliquez sur le boutton en dessous pour voir les catastrophes publiér
+                          </p>
+
+                          <a href="javascript:;" class="btn btn-sm btn-outline-primary">Voir les catastrophes</a>
+                        </div>
+                      </div>
+                      <div class="col-sm-5 text-center text-sm-left">
+                        
+                      </div>
                     </div>
-                    
                   </div>
-       {% endfor %}
-         </div>
+    
        
      
 </div>

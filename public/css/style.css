@@ -1077,18 +1077,18 @@ button.bg-danger:hover {
 }
 
 .card {
-    border: 1px solid #f4eeff;
-    border-radius: 10px;
-    box-shadow: 0 4px 4px #f5f8ff;
+    background-clip: border-box!important;
+    border: 0 solid #d9dee3!important;
+    border-radius: 0.5rem!important;
     margin-bottom: 1.875rem
 }
 
 .card.active {
-    background-color: #420ba1
+    background-color: #9f9f9f;
 }
 
 .card-body {
-    padding: 1.5rem
+    padding: 1.5rem;
 }
 
 .card-header {
@@ -2079,7 +2079,7 @@ html.menu-opened body {
 }
 
 .sidebar-menu li.active a {
-    background-color: #218C74;
+    background-color: #218c75de;
     color: #fff
 }
 

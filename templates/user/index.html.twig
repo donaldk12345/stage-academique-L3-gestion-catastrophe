@@ -28,9 +28,6 @@
 <table class="table table-hover table-center">
 <thead>
 <tr>
-<td class="text-nowrap">
-<div class="font-weight-600">Slug</div>
-</td>
 <td class="text-nowrap">Nom Catastrophe</td>
 <td class="text-center">Localistation</td>
 <td class="text-center"> Description </td>
@@ -53,9 +50,7 @@
 {% for catastrophe in user.catastrophes %}
 <tr>
 
-<td class="text-nowrap">
-<div class="font-weight-600"> {{ catastrophe.slug| u.truncate(15 ,'...') }} </div>
-</td>
+
 <td class="text-nowrap"> {{ catastrophe.nomCatastrophe }} </td>
 <td class="text-center">  {{ catastrophe.localisation }} </td>
 <td class="text-center">   {{  catastrophe.description| u.truncate(30 ,'...') }} </td>
@@ -89,7 +84,7 @@
 </div>
 </div>
 {% else %}
-  <div class="alert alert-danger alert-dismissible fade show shadow col-md-8 text-center m-auto">
+  <div class="alert alert-warning alert-dismissible fade show shadow col-md-8 text-center m-auto">
   <i class="bi bi-exclamation-octagon"></i><p>
         <strong class="text-uppercase"> {{  user.username}}  n'as pas publier un catastrophe !</strong>
      </p>

@@ -31,7 +31,7 @@ class ContinentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $continentRepository->add($continent, true);
 
-            return $this->redirectToRoute('app_continent_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('listescontinent', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('continent/new.html.twig', [
@@ -57,7 +57,7 @@ class ContinentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $continentRepository->add($continent, true);
 
-            return $this->redirectToRoute('app_continent_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('listescontinent', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('continent/edit.html.twig', [
@@ -73,6 +73,6 @@ class ContinentController extends AbstractController
             $continentRepository->remove($continent, true);
         }
 
-        return $this->redirectToRoute('app_continent_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('listescontinent', [], Response::HTTP_SEE_OTHER);
     }
 }

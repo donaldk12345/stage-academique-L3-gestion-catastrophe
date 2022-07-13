@@ -31,7 +31,7 @@ class SouscategorieController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $souscategorieRepository->add($souscategorie, true);
 
-            return $this->redirectToRoute('app_souscategorie_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('listesSouscategorie', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('souscategorie/new.html.twig', [
@@ -57,7 +57,7 @@ class SouscategorieController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $souscategorieRepository->add($souscategorie, true);
 
-            return $this->redirectToRoute('app_souscategorie_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('listesSousCategorie', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('souscategorie/edit.html.twig', [
@@ -73,6 +73,6 @@ class SouscategorieController extends AbstractController
             $souscategorieRepository->remove($souscategorie, true);
         }
 
-        return $this->redirectToRoute('app_souscategorie_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('listesSousCategorie', [], Response::HTTP_SEE_OTHER);
     }
 }

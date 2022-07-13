@@ -43,4 +43,15 @@ class RechercheController extends AbstractController
             'catastrophes'=> $catastrophes
         ]);
     }
+
+    /**
+     * @Route("/listescategories", name="listescategories")
+     */
+    public function gestionCategorie(){
+
+        return $this->render('categorie/dash.html.twig',[
+
+        ]);
+    }
+
 }

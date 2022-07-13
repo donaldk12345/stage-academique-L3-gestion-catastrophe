@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Catastrophes!{% endblock %}
+
+{% block body %}
+<style>
+ .btn-out {
+  color: #218c75e1;
+  border-color: #218c75e1;
+  background: transparent;
+}
+.btn-out:hover {
+  color: #fff;
+  background-color: #218c75e1;
+  border-color: #218c75fd;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
+  transform: translateY(-1px);
+}
+</style>
+
+<div class="main-wrapper">
+   {% include "partials/_header.html.twig" %}
+   
+   {% include "partials/_sidebar.html.twig" %}
+
+<div class="page-wrapper mt-4">
+<div class="row">
+<div class="col-md-11 d-flex m-auto">
+
+  <div class="card col-md">
+                    <div class="d-flex align-items-end row">
+                      <div class="col-sm-7">
+                        <div class="card-body ">
+                          <h5 class="card-title " style="color:#218c75e1">Gestions des categories</h5>
+                          <p class="mb-4">
+                            Ici nous allons procéde à l'ajout des categories, pays et continent
+                          </p>
+                          <div class="row">
+                           <div class="col-md">
+                           <a href=" {{ path('listespays') }} " class="btn btn-sm btn-out">Categories Pays</a>
+                           </div>
+                           <div  class="col-md">
+                           <a href="{{ path('listescontinent') }} " class="btn btn-sm btn-out">Categories continent</a>
+                           </div>
+                            <div class="col-md">
+                           <a href="{{ path('listescategorie') }}" class="btn btn-sm btn-out">Categories catastrophes</a>
+                           </div>
+                            <div class="col-md">
+                           <a href="{{ path('listesSousCategorie') }}" class="btn btn-sm btn-out">Sous categories </a>
+                           </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-5 text-center text-sm-left">
+                        
+                      </div>
+                </div>
+    </div>
+    
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endblock %}

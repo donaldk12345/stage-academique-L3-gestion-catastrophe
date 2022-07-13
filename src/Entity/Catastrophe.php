@@ -138,6 +138,11 @@ class Catastrophe
      */
     private $couts;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Prevention::class, mappedBy="catastrophe")
+     */
+    private $preventions;
+
         /**
      * 
      * @ORM\PrePersist
@@ -154,6 +159,7 @@ class Catastrophe
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->preventions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -440,6 +446,36 @@ class Catastrophe
     public function setCouts(?int $couts): self
     {
         $this->couts = $couts;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Prevention>
+     */
+    public function getPreventions(): Collection
+    {
+        return $this->preventions;
+    }
+
+    public function addPrevention(Prevention $prevention): self
+    {
+        if (!$this->preventions->contains($prevention)) {
+            $this->preventions[] = $prevention;
+            $prevention->setCatastrophe($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrevention(Prevention $prevention): self
+    {
+        if ($this->preventions->removeElement($prevention)) {
+            // set the owning side to null (unless already changed)
+            if ($prevention->getCatastrophe() === $this) {
+                $prevention->setCatastrophe(null);
+            }
+        }
 
         return $this;
     }

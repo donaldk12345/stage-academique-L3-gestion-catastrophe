@@ -31,7 +31,7 @@ class PaysController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $paysRepository->add($pay, true);
 
-            return $this->redirectToRoute('app_pays_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('listespays', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('pays/new.html.twig', [
@@ -57,7 +57,7 @@ class PaysController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $paysRepository->add($pay, true);
 
-            return $this->redirectToRoute('app_pays_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('listespays', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('pays/edit.html.twig', [
@@ -73,6 +73,6 @@ class PaysController extends AbstractController
             $paysRepository->remove($pay, true);
         }
 
-        return $this->redirectToRoute('app_pays_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('listespays', [], Response::HTTP_SEE_OTHER);
     }
 }

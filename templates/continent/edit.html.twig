@@ -1,13 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Continent{% endblock %}
+{% block title %}Modifier continent{% endblock %}
 
 {% block body %}
-    <h1>Edit Continent</h1>
 
-    {{ include('continent/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_continent_index') }}">back to list</a>
+<style>
+.form-group{
+    margin:5px;
+}
+form-control:focus {
+    color: #36434d!important;
+    background-color:#e0e7ed!important;
+    border-color:#f4f4f4 !important;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+    outline: 0;
+}
+.form-control:disabled, .form-control[readonly]
+{
+    background-color: #fff;
+    opacity: 1; }
+.form-control{
+    border-color:#e0e7ed!important;
+    outline: none!important;
+    background-color:;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+    margin-top:10px;
+  
 
-    {{ include('continent/_delete_form.html.twig') }}
+}
+</style>
+
+<div class="main-wrapper">
+   {% include "partials/_header.html.twig" %}
+   
+   {% include "partials/_sidebar.html.twig" %}
+
+<div class="page-wrapper">
+ 
+<div class="row">
+<div class="col-md-10 d-flex m-auto mt-4">
+
+<div class="card card-table flex-fill">
+<div class="card-header ">
+<h4 class="card-title  text-center text-muted">Modifier le continent</h4>
+</div>
+<div class="card-body pb-3">
+    {{ include('continent/_form.html.twig', {'button_label ': 'Update'}) }}
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+   
+
+    
 {% endblock %}
+

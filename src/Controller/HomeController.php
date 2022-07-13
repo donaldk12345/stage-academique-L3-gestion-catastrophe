@@ -30,11 +30,11 @@ class HomeController extends AbstractController
         $request->query->getInt('page',1),
             8
         );
-        
+        $preventions=$manager->createQuery('SELECT COUNT(p) FROM App\Entity\Prevention p')->getSingleScalarResult();
         $users=$manager->createQuery('SELECT COUNT(u) FROM App\Entity\USer u')->getSingleScalarResult();
         $catastrophes=$manager->createQuery('SELECT COUNT(a) FROM App\Entity\Catastrophe a')->getSingleScalarResult();
         return $this->render('home/index.html.twig', [
-            'stats' => compact('users','catastrophes'),
+            'stats' => compact('users','catastrophes','preventions'),
             'catastrophees' => $catastrophees
         ]);
     }

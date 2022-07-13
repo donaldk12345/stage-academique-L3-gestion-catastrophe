@@ -18,34 +18,35 @@
 
 <div class="card card-table flex-fill">
 <div class="card-header">
-<h4 class="card-title  text-center text-muted text-uppercase" style="">Listes des utilisateurs</h4>
+<h4 class="card-title  text-center text-muted text-uppercase" style="">Listes des preventions</h4>
 </div>
 <div class="card-body">
 <div class="table-responsive no-radius">
 <table class="table table-hover table-center">
 <thead>
 <tr>
-<th>Photos</th>
-<th>Prenom</th>
-<th class="text-center">Date de création du compte</th>
-<th class="text-center">email</th>
-<th class="text-center">pays</th>
+<th>catastrophe</th>
+<th>Nom</th>
+<th class="text-center">Date </th>
+<th class="text-center"> Titre </th>
+<th class="text-center"> description </th>
 <th class="text-end">Actions</th>
 </tr>
 </thead>
 <tbody>
- {% for user in users %}
+ {% for prevention in preventions %}
 <tr>
 <td class="text-nowrap">
 <div class="font-weight-600">
-  <a href="#" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="/images/blog/{{  user.imageUser  }}" alt="User Image"></a>
+<h2>
+{{  prevention.catastrophe.nomCatastrophe }}
 </h2>
 </div>
 </td>
-<td class="text-nowrap"> {{ user.username }} </td>
-<td class="text-center">{{ user.createdAt | date ('d/m/y') }} à {{ user.createdAt | date ('h:i') }}</td>
-<td class="text-center">  {{  user.email }} </td>
-<td class="text-center">  {{  user.userSelect.nom }} </td>
+<td class="text-nowrap"> {{ prevention.prevent.username }} </td>
+<td class="text-center">{{ prevention.createdAt | date ('d/m/y') }} à {{ prevention.createdAt | date ('h:i') }}</td>
+<td class="text-center">  {{  prevention.titre }} </td>
+<td class="text-center"><p>  {{  prevention.description| u.truncate(25 ,'...')  }} </p></td>
 <td class="text-end">
 <div class="actions">
 <a href="#" class="btn btn-sm bg-success-light me-2">

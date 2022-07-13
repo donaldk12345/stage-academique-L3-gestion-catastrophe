@@ -97,9 +97,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $userSelect;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Prevention::class, mappedBy="prevent")
+     */
+    private $preventions;
+
     public function __construct()
     {
         $this->catastrophes = new ArrayCollection();
+        $this->preventions = new ArrayCollection();
     }
     /**
      * 
@@ -297,6 +303,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUserSelect(?Pays $userSelect): self
     {
         $this->userSelect = $userSelect;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Prevention>
+     */
+    public function getPreventions(): Collection
+    {
+        return $this->preventions;
+    }
+
+    public function addPrevention(Prevention $prevention): self
+    {
+        if (!$this->preventions->contains($prevention)) {
+            $this->preventions[] = $prevention;
+            $prevention->setPrevent($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrevention(Prevention $prevention): self
+    {
+        if ($this->preventions->removeElement($prevention)) {
+            // set the owning side to null (unless already changed)
+            if ($prevention->getPrevent() === $this) {
+                $prevention->setPrevent(null);
+            }
+        }
 
         return $this;
     }
