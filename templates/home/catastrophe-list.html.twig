@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Catastrophes!{% endblock %}
+
+{% block body %}
+<style>
+  .btn-out {
+  color: #218c75e1;
+  border-color: #218c75e1;
+  background: transparent;
+}
+.btn-out:hover {
+  color: #fff;
+  background-color: #218c75e1;
+  border-color: #218c75fd;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
+  transform: translateY(-1px);
+}
+</style>
+
+<div class="main-wrapper">
+   {% include "partials/_header.html.twig" %}
+   
+   {% include "partials/_sidebar.html.twig" %}
+
+<div class="page-wrapper mt-4">
+<div class="row mb-5 justify-content-center">
+<div class="col-md-11 d-flex m-auto">
+<div class="container">
+ 
+  <div class="row justify-content-center">
+   <div class="card col-md p-3">
+     <div class="row justify-content-center">
+      <div class="col-md-5 m-auto pb-3">
+        {{ form_start(form) }}
+    {{ form_widget(form) }}
+      
+     <button type="submit" class="btn btn-sm btn-out text-center">Réchercher</button>
+ {{ form_end(form) }}
+    </div>
+  
+       </div>
+     {% for catastrophe in catastrophes %}
+        
+   
+        <section class="up-card-section up-card-list-section up-card-hover" id="job-1548432673168756736" style="margin-top:10px;"> <div class="row my-10"><div class="col"><!----> <h4 class="my-0 p-sm-right job-tile-title"><a href="{{ path('view' , {'slug': catastrophe.slug } )}}"> {{ catastrophe.nomCatastrophe }} </a></h4></div> <!----></div> <div class="mb-10"><div><small class="text-muted display-inline-block text-muted"><strong data-test="job-type"> {{ catastrophe.Continent.nom }} </strong> <span>
+      - <span data-test="contractor-tier">  {{ catastrophe.pays.nom }} </span></span> <span>
+      -
+      <span> {{ catastrophe.localisation }} </span> <span data-test="budget">
+        
+      </span></span> <!----> <span>
+      publier par &nbsp;{{ catastrophe.catastrophe.username}}
+      <span data-test="posted-on"><span>{{ catastrophe.createdAt | ago (locale='fr') }}</span></span></span></small> <!----></div> <div class="mt-10"><div class="up-line-clamp-v2-wrapper break" style="--lines:3; --line-clamp-height:40px;"><div data-v-5b2135c2="" tabindex="-1" class="resize-observer"></div> <div id="up-line-clamp-v2-5" class="up-line-clamp-v2 clamped"><span data-test="job-description-text">  {{ catastrophe.description }} <span class="highlight">developper</span> with a rich portfolio, please provide your portfolio and i'll share the app details with you .</span></div> <!----></div></div> <div class="mt-10"><div role="group" class="up-skill-container" data-test="attrs-container"><div data-v-5b2135c2="" tabindex="-1" class="resize-observer"></div> <button data-cy="skill-skip-link" type="button" class="up-skill-skip sr-only" style="display: none;">
+    Skip skills
+  </button> <button data-cy="left-arrow" type="button" class="up-btn up-btn-link up-btn-prev" style="display: none;"><span class="sr-only">Previous skills</span> <div class="up-icon"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 14 14" role="img"><polygon fill-rule="evenodd" points="3 7 10.433 14 12 12.524 6.134 7 12 1.476 10.433 0"></polygon></svg></div></button> <div class="up-skill-wrapper"><a data-v-c4687342="" class="up-skill-badge text-muted" href="/nx/jobs/search/?ontology_skill_uid=1031626779570716672" tabindex="0" data-test="attr-item"> {{  catastrophe.SousCategorie.nom }}</a></div> <button data-cy="right-arrow" type="button" class="up-btn up-btn-link up-btn-next" style="display: none;"><span class="sr-only">Next skills</span> <div class="up-icon"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 14 14" role="img"><polygon fill-rule="evenodd" points="11.5 7 4.067 0 2.5 1.476 8.366 7 2.5 12.524 4.067 14"></polygon></svg></div></button></div></div> <!----> <!----> <!----></div></section>
+    {% endfor %}         
+     </div>
+    
+</div>
+</div>
+     
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endblock %}

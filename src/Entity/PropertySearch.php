@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Categorie;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
 
 class PropertySearch{
@@ -29,5 +31,5 @@ class PropertySearch{
         return $this;
     }
 
-    
+
 }

@@ -15,9 +15,12 @@
 <li class="submenu">
 <a href=" {{ path('catastrophe_new') }} "><i class="fas fa-plus" style="color:#218C74;"></i> <span> Nouveau Catastrophe</span></a>
 </li>
+<li class="submenu">
+<a href=" {{ path('catastrophe_publier') }} "><i class="fas fa-plus" style="color:#218C74;"></i> <span>Catastrophe publier</span></a>
+</li>
  {% if is_granted('ROLE_ADMIN') %}
 <li>
-<a href=" {{ path('catastrophe-list') }} "><i class="fas fa-newspaper" style="color:#218C74;"></i> <span>Catastrophes</span></a>
+<a href=" {{ path('catastrophe_list') }} "><i class="fas fa-newspaper" style="color:#218C74;"></i> <span>Catastrophes</span></a>
 </li>
 <li>
 <li>

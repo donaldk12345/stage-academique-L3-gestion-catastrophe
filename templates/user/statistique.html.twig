@@ -4,7 +4,18 @@
 
 {% block body %}
 <style>
- 
+  .btn-out {
+  color: #218c75e1;
+  border-color: #218c75e1;
+  background: transparent;
+}
+.btn-out:hover {
+  color: #fff;
+  background-color: #218c75e1;
+  border-color: #218c75fd;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
+  transform: translateY(-1px);
+}
 </style>
 
 <div class="main-wrapper">
@@ -14,9 +25,9 @@
 
 <div class="page-wrapper mt-4">
  
-<div class="row">
-<div class="col-md-11 d-flex m-auto">
-  <div class="col-md-8 mt-3 m-auto">
+<div class="row" id="printJS-graphe">
+<div class="col-md-11 d-flex m-auto" >
+  <div class="col-md-8 mt-3 m-auto" >
     <div class="col-md text-center mt-2">
  <h5 class=" bg-success-light">Nombre de mort enregistrer en fonction de la date </h5>
  </div> <br><br>
@@ -59,8 +70,11 @@
        
   </div>
 </div>
- 
+</div>
+  
 </div>
 </div>
-</div>
+ {% block javascripts %}
+    <script src="{{ asset('print/print.min.js') }}"></script>
+    {% endblock %}
 {% endblock %}
